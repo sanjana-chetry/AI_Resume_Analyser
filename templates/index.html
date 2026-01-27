@@ -8,7 +8,28 @@
 
 </head>
 <body>
-    <h1>Welcome to AI Resume Analyser</h1>
-    <p>Day 2: Flask is working 🎉</p>
+    <nav>
+        <span>zCV</span>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">How it works</a></li>
+        </ul>
+    </nav>
+    
+    <div class="hero-section">
+        <div class="container">
+            <h1>Analyse Your Resume <br>with AI</h1>
+            <p>Get instant feedback, identify skills gaps, and improve your resume with AI-powered insights.</p>
+
+            {% if message %}
+            <p class="message">{{message}}</p>
+            {% endif %}
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="resume" accept=".pdf,.docx" required>
+                <button type="submit">Upload your resume</button>
+            </form>
+            <p>Supports PDF and DOCX formats. Your resume is processed securely.</p>
+        </div>
+    </div>
 </body>
 </html>
