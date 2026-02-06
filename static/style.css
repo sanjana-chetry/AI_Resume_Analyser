@@ -6,7 +6,9 @@ body{
     background: linear-gradient(to bottom right, #0b0d1a 0%, #2B2D5E 60%);
     color: white;
     min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
+
 .hero-section{
     display: flex; 
     min-height: 100vh;
