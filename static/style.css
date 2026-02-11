@@ -11,7 +11,7 @@ body{
 
 .hero-section{
     display: flex; 
-    min-height: 100vh;
+    min-height: calc(100vh - 65px);
     justify-content: center;
     align-items: center;
 }
@@ -90,5 +90,36 @@ nav{
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+.upload-section{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.upload-box{
+    max-width: 450px;
+    border: 3px dashed rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius:20px;
+    padding: 35px 40px;
+    margin-top: 30px;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+.upload-box:hover{
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+#resume-input{
+    display: none;
+}
+.upload-title{
+    font-weight: 500;
+}
+.upload-subtitle{
+    text-align: center;
 }
 

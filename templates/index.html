@@ -25,11 +25,16 @@
             {% if message %}
             <p class="message">{{message}}</p>
             {% endif %}
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="resume" accept=".pdf,.docx" required>
-                <button type="submit">Upload your resume</button>
-            </form>
-            <p>Supports PDF and DOCX formats. Your resume is processed securely.</p>
+            <div class="upload-section">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <input type="file" id="resume-input" name="resume" accept=".pdf,.docx" required>
+                    <label for="resume-input" class="upload-box">
+                        <h2 class="upload-title">Drop your resume here</h2>
+                        <p class="upload-subtitle">Click to upload</p>
+                    </label>
+                </form>
+            </div>
+            <p class="helper-text">Supports PDF and DOCX formats. Your resume is processed securely.</p>
         </div>
     </div>
 </body>
