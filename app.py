@@ -1,6 +1,8 @@
 from flask import Flask, render_template,request
 import os
 from utils.resume_parser import extract_text
+from utils.text_cleaner import clean_text
+
 
 
 app = Flask(__name__)
@@ -25,6 +27,10 @@ def upload_file():
     file_path = os.path.join(UPLOAD_FOLDER, file.filename)
     file.save(file_path)
     text = extract_text(file_path)
+    cleaned_text = clean_text(text)
+
+    #print(cleaned_text[:])
+
     #print(text[:])   # print first 500 chars
 
 
