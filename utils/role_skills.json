@@ -1,0 +1,171 @@
+{
+  "software": [
+    "data structures",
+    "algorithms",
+    "object oriented programming",
+    "problem solving",
+    "system design",
+    "python",
+    "java",
+    "c++",
+    "javascript",
+    "git",
+    "debugging",
+    "software development lifecycle"
+  ],
+
+  "frontend": [
+    "html",
+    "css",
+    "javascript",
+    "react",
+    "angular",
+    "vue",
+    "responsive design",
+    "flexbox",
+    "css grid",
+    "api integration",
+    "browser debugging",
+    "ui development"
+  ],
+
+  "backend": [
+    "python",
+    "java",
+    "node.js",
+    "flask",
+    "django",
+    "spring boot",
+    "rest api",
+    "database design",
+    "sql",
+    "authentication",
+    "jwt",
+    "server development"
+  ],
+
+  "full-stack": [
+    "html",
+    "css",
+    "javascript",
+    "react",
+    "node.js",
+    "flask",
+    "django",
+    "rest api",
+    "database integration",
+    "deployment",
+    "git",
+    "web development"
+  ],
+
+  "ml": [
+    "python",
+    "machine learning",
+    "deep learning",
+    "neural networks",
+    "pytorch",
+    "tensorflow",
+    "scikit-learn",
+    "feature engineering",
+    "model training",
+    "model evaluation",
+    "data preprocessing",
+    "statistics"
+  ],
+
+  "data-scientist": [
+    "python",
+    "statistics",
+    "data analysis",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "seaborn",
+    "machine learning",
+    "data visualization",
+    "hypothesis testing",
+    "sql",
+    "data cleaning"
+  ],
+
+  "ai": [
+    "python",
+    "machine learning",
+    "deep learning",
+    "transformers",
+    "natural language processing",
+    "computer vision",
+    "pytorch",
+    "tensorflow",
+    "model optimization",
+    "ai deployment",
+    "neural networks"
+  ],
+
+  "devops": [
+    "docker",
+    "kubernetes",
+    "ci/cd",
+    "jenkins",
+    "github actions",
+    "linux",
+    "aws",
+    "azure",
+    "gcp",
+    "infrastructure as code",
+    "monitoring",
+    "networking"
+  ],
+
+  "cybersecurity": [
+    "network security",
+    "cryptography",
+    "penetration testing",
+    "vulnerability assessment",
+    "owasp",
+    "ethical hacking",
+    "incident response",
+    "security auditing",
+    "wireshark",
+    "metasploit"
+  ],
+
+  "data-engineer": [
+    "python",
+    "sql",
+    "etl pipelines",
+    "data warehousing",
+    "hadoop",
+    "spark",
+    "kafka",
+    "data modeling",
+    "big data",
+    "cloud data platforms"
+  ],
+
+  "android": [
+    "kotlin",
+    "java",
+    "android sdk",
+    "android studio",
+    "xml layouts",
+    "firebase",
+    "rest api integration",
+    "mvvm architecture",
+    "mobile ui development"
+  ],
+
+  "ios": [
+    "swift",
+    "objective-c",
+    "xcode",
+    "swiftui",
+    "uikit",
+    "rest api integration",
+    "ios development",
+    "mobile architecture",
+    "core data"
+  ]
+}
+
