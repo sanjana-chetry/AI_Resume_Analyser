@@ -5,6 +5,7 @@ const uploadBox = document.querySelector(".upload-box");
 const roleSection = document.getElementById("roleSection");
 const roleSelect = document.getElementById("roleSelect");
 const analyseBtn = document.getElementById("analyseBtn");
+const form = document.querySelector("form");
 
 file_inp.addEventListener("change",function(){  //UPLOAD LOGIC
     if(file_inp.files.length > 0){
@@ -41,7 +42,7 @@ uploadBox.addEventListener("drop",function(e){
 
 //ROLE SELECTION
 roleSection.addEventListener("change",function(){
-    if(roleSection.value !==""){
+    if(roleSelect.value !==""){
         analyseBtn.disabled=false;
         analyseBtn.classList.add("enabled");
     }
@@ -51,9 +52,7 @@ roleSection.addEventListener("change",function(){
     }
 });
 
-analyseBtn.addEventListener("click",function(){
-    if(analyseBtn.disabled) return;
-
-    analyseBtn.disabled=true;
-    analyseBtn.innerHTML="Analysing"
+form.addEventListener("submit", function () {
+    analyseBtn.innerHTML = "Analysing...";
 });
+

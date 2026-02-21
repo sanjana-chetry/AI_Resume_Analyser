@@ -25,7 +25,7 @@
             <p class="message">{{message}}</p>
             {% endif %} 
             <div class="upload-section">
-                    <form action="/upload" method="post" enctype="multipart/form-data">
+                    <form action="/upload" method="POST" enctype="multipart/form-data">
                         <input type="file" id="resume-input" name="resume" accept=".pdf,.docx" required>
                         <label for="resume-input" class="upload-box">
                             <div class="spinner"></div>
@@ -34,7 +34,7 @@
                         </label>
                         <!-- Role Selection Card -->
                         <div class="role-section" id="roleSection">
-                            <select id="roleSelect" id="role" disabled>
+                            <select id="roleSelect" name="role" disabled>
                                 <option value="">Select Target Role</option>
                                 <option value="software">Software Developer</option>
                                 <option value="frontend">Frontend Developer</option>
