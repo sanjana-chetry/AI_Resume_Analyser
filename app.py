@@ -2,6 +2,7 @@ from flask import Flask, render_template,request
 import os
 from utils.resume_parser import extract_text
 from utils.text_cleaner import clean_text
+from utils.skill_matcher import analyse_skills
 
 
 
@@ -29,12 +30,29 @@ def upload_file():
     text = extract_text(file_path)
     cleaned_text = clean_text(text)
 
+    #skill matcher
+    selected_role=request.form.get("role")
+    if not selected_role:
+        return render_template("index.html", message="Please select a role")
+
+    coverage,matched,missing=analyse_skills(cleaned_text,selected_role)
+
+    return render_template(
+        "result.html",
+        role=selected_role,
+        coverage=coverage,
+        matched=matched,
+        missing=missing
+    )
+
+    #print(matched)
+
     #print(cleaned_text[:])
 
     #print(text[:])   # print first 500 chars
 
 
-    return render_template("index.html", message="File uploaded successfully!") #response
+   # return render_template("index.html", message="File uploaded successfully!") #response
 
 
 
