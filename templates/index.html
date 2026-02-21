@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zCV | AI Resume Analyser </title>
-    <link rel="icon" type="image/png" sizes="32x32" href="fevicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon.png">
+    <title>zCV | Resume Analyser</title>
     <link rel="stylesheet" href="../static/style.css">
-
+    
 </head>
 <body>
     <nav>
@@ -16,7 +16,6 @@
             <li><a href="#">How it works</a></li>
         </ul>
     </nav>
-    
     <div class="hero-section">
         <div class="container">
             <h1>Analyse Your Resume <br>with AI</h1>
@@ -24,16 +23,36 @@
 
             {% if message %}
             <p class="message">{{message}}</p>
-            {% endif %}
+            {% endif %} 
             <div class="upload-section">
-                <form action="/upload" method="post" enctype="multipart/form-data">
-                    <input type="file" id="resume-input" name="resume" accept=".pdf,.docx" required>
-                    <label for="resume-input" class="upload-box">
-                        <div class="spinner"></div>
-                        <h2 class="upload-title">Drop your resume here</h2>
-                        <p class="upload-subtitle">Click to upload</p>
-                    </label>
-                </form>
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" id="resume-input" name="resume" accept=".pdf,.docx" required>
+                        <label for="resume-input" class="upload-box">
+                            <div class="spinner"></div>
+                            <h2 class="upload-title">Drop your resume here</h2>
+                            <p class="upload-subtitle">Click to upload</p>
+                        </label>
+                        <!-- Role Selection Card -->
+                        <div class="role-section" id="roleSection">
+                            <select id="roleSelect" id="role" disabled>
+                                <option value="">Select Target Role</option>
+                                <option value="software">Software Developer</option>
+                                <option value="frontend">Frontend Developer</option>
+                                <option value="backend">Backend Developer</option>
+                                <option value="full-stack">Full Stack Developer</option>
+                                <option value="ml">Machine Learning Engineer</option>
+                                <option value="data-scientist">Data Scientist</option>
+                                <option value="ai">AI Engineer</option>
+                                <option value="devops">DevOps Engineer</option>
+                                <option value="cybersecurity">Cybersecurity Engineer</option>
+                                <option value="data-engineer">Data Engineer</option>
+                                <option value="android">Android Developer</option>
+                                <option value="ios">IOS Developer</option>
+                            </select>
+
+                            <button type="submit" id="analyseBtn" disabled>Analyse Resume</button>
+                        </div>
+                    </form>
             </div>
             <p class="helper-text">Supports PDF and DOCX formats. Your resume is processed securely.</p>
         </div>
