@@ -1,0 +1,169 @@
+{
+  "software": [
+    {"name":"data structures and algorithms","synonyms":["data structures","algorithms","data structure","algorithm","dsa"]},
+    {"name":"object oriented programming","synonyms":["oop","oops"]},
+    { "name": "problem solving", "synonyms": [] },
+    { "name": "system design", "synonyms": ["system architecture"] },
+    { "name": "python", "synonyms": [] },
+    { "name": "java", "synonyms": [] },
+    { "name": "c++", "synonyms": ["cpp"] },
+    { "name": "javascript", "synonyms": ["js"] },
+    { "name": "git", "synonyms": [] },
+    { "name": "debugging", "synonyms": [] },
+    { "name": "software development lifecycle", "synonyms": [] }
+  ],
+
+  "frontend": [
+    { "name": "html", "synonyms": [] },
+    { "name": "css", "synonyms": [] },
+    { "name": "javascript", "synonyms": ["js"] },
+    { "name": "react", "synonyms": ["reactjs"] },
+    { "name": "angular", "synonyms": ["angularjs"] },
+    { "name": "vue", "synonyms": ["vuejs"] },
+    { "name": "responsive design", "synonyms": [] },
+    { "name": "flexbox", "synonyms": [] },
+    { "name": "css grid", "synonyms": ["grid layout"] },
+    { "name": "api integration", "synonyms": ["rest api integration"] },
+    { "name": "browser debugging", "synonyms": ["chrome devtools"] },
+    { "name": "ui development", "synonyms": ["user interface development"] }
+  ],
+
+  "backend": [
+    { "name": "python", "synonyms": [] },
+    { "name": "java", "synonyms": [] },
+    { "name": "node.js", "synonyms": ["node js"] },
+    { "name": "flask", "synonyms": [] },
+    { "name": "django", "synonyms": [] },
+    { "name": "spring boot", "synonyms": [] },
+    { "name": "rest api", "synonyms": ["restful api"] },
+    { "name": "database design", "synonyms": [] },
+    { "name": "sql", "synonyms": [] },
+    { "name": "authentication", "synonyms": ["auth"] },
+    { "name": "jwt", "synonyms": ["json web token"] },
+    { "name": "server development", "synonyms": ["backend development"] }
+  ],
+
+  "full-stack": [
+    { "name": "html", "synonyms": [] },
+    { "name": "css", "synonyms": [] },
+    { "name": "javascript", "synonyms": ["js"] },
+    { "name": "react", "synonyms": ["reactjs"] },
+    { "name": "node.js", "synonyms": ["node js"] },
+    { "name": "flask", "synonyms": [] },
+    { "name": "django", "synonyms": [] },
+    { "name": "rest api", "synonyms": ["restful api"] },
+    { "name": "database integration", "synonyms": [] },
+    { "name": "deployment", "synonyms": ["app deployment"] },
+    { "name": "git", "synonyms": ["github"] },
+    { "name": "web development", "synonyms": [] }
+  ],
+
+  "ml": [
+    { "name": "python", "synonyms": [] },
+    { "name": "machine learning", "synonyms": ["ml"] },
+    { "name": "deep learning", "synonyms": ["dl"] },
+    { "name": "neural networks", "synonyms": ["nn"] },
+    { "name": "pytorch", "synonyms": [] },
+    { "name": "tensorflow", "synonyms": [] },
+    { "name": "scikit-learn", "synonyms": ["sklearn"] },
+    { "name": "feature engineering", "synonyms": [] },
+    { "name": "model training", "synonyms": [] },
+    { "name": "model evaluation", "synonyms": [] },
+    { "name": "data preprocessing", "synonyms": ["data cleaning"] },
+    { "name": "statistics", "synonyms": [] }
+  ],
+
+  "data-scientist": [
+    { "name": "python", "synonyms": [] },
+    { "name": "statistics", "synonyms": [] },
+    { "name": "data analysis", "synonyms": ["data analytics"] },
+    { "name": "pandas", "synonyms": [] },
+    { "name": "numpy", "synonyms": [] },
+    { "name": "matplotlib", "synonyms": [] },
+    { "name": "seaborn", "synonyms": [] },
+    { "name": "machine learning", "synonyms": ["ml"] },
+    { "name": "data visualization", "synonyms": ["data viz"] },
+    { "name": "hypothesis testing", "synonyms": [] },
+    { "name": "sql", "synonyms": [] },
+    { "name": "data cleaning", "synonyms": [] }
+  ],
+
+  "ai": [
+    { "name": "python", "synonyms": [] },
+    { "name": "machine learning", "synonyms": ["ml"] },
+    { "name": "deep learning", "synonyms": ["dl"] },
+    { "name": "transformers", "synonyms": [] },
+    { "name": "natural language processing", "synonyms": ["nlp"] },
+    { "name": "computer vision", "synonyms": ["cv"] },
+    { "name": "pytorch", "synonyms": [] },
+    { "name": "tensorflow", "synonyms": [] },
+    { "name": "model optimization", "synonyms": [] },
+    { "name": "ai deployment", "synonyms": [] },
+    { "name": "neural networks", "synonyms": ["nn"] }
+  ],
+
+  "devops": [
+    { "name": "docker", "synonyms": [] },
+    { "name": "kubernetes", "synonyms": ["k8s"] },
+    { "name": "ci/cd", "synonyms": ["continuous integration", "continuous deployment"] },
+    { "name": "jenkins", "synonyms": [] },
+    { "name": "github actions", "synonyms": [] },
+    { "name": "linux", "synonyms": [] },
+    { "name": "aws", "synonyms": ["amazon web services"] },
+    { "name": "azure", "synonyms": [] },
+    { "name": "gcp", "synonyms": ["google cloud"] },
+    { "name": "infrastructure as code", "synonyms": ["iac"] },
+    { "name": "monitoring", "synonyms": [] },
+    { "name": "networking", "synonyms": [] }
+  ],
+
+  "cybersecurity": [
+    { "name": "network security", "synonyms": [] },
+    { "name": "cryptography", "synonyms": [] },
+    { "name": "penetration testing", "synonyms": ["pentesting"] },
+    { "name": "vulnerability assessment", "synonyms": ["vulnerability scanning"] },
+    { "name": "owasp", "synonyms": [] },
+    { "name": "ethical hacking", "synonyms": [] },
+    { "name": "incident response", "synonyms": [] },
+    { "name": "security auditing", "synonyms": [] },
+    { "name": "wireshark", "synonyms": [] },
+    { "name": "metasploit", "synonyms": [] }
+  ],
+
+  "data-engineer": [
+    { "name": "python", "synonyms": [] },
+    { "name": "sql", "synonyms": [] },
+    { "name": "etl pipelines", "synonyms": ["etl"] },
+    { "name": "data warehousing", "synonyms": ["data warehouse"] },
+    { "name": "hadoop", "synonyms": [] },
+    { "name": "spark", "synonyms": ["apache spark"] },
+    { "name": "kafka", "synonyms": ["apache kafka"] },
+    { "name": "data modeling", "synonyms": ["data modelling"] },
+    { "name": "big data", "synonyms": [] },
+    { "name": "cloud data platforms", "synonyms": [] }
+  ],
+
+  "android": [
+    { "name": "kotlin", "synonyms": [] },
+    { "name": "java", "synonyms": [] },
+    { "name": "android sdk", "synonyms": [] },
+    { "name": "android studio", "synonyms": [] },
+    { "name": "xml layouts", "synonyms": [] },
+    { "name": "firebase", "synonyms": [] },
+    { "name": "rest api integration", "synonyms": [] },
+    { "name": "mvvm architecture", "synonyms": ["mvvm"] },
+    { "name": "mobile ui development", "synonyms": [] }
+  ],
+
+  "ios": [
+    { "name": "swift", "synonyms": [] },
+    { "name": "objective-c", "synonyms": ["objective c"] },
+    { "name": "xcode", "synonyms": [] },
+    { "name": "swiftui", "synonyms": [] },
+    { "name": "uikit", "synonyms": [] },
+    { "name": "rest api integration", "synonyms": [] },
+    { "name": "ios development", "synonyms": [] },
+    { "name": "mobile architecture", "synonyms": [] },
+    { "name": "core data", "synonyms": [] }
+  ]
+}

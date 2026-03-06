@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon.png">
+    <title>zCV | Result</title>
+    <link rel="stylesheet" href="../static/result.css">
+</head>
+<body>
+
+<div class="result-wrapper">
+
+    <h1 class="result-title">Resume Analysis</h1>
+    <h2 class="target-role">Target Role: {{ role }}</h2>
+
+    <div class="result-columns">
+
+        <!-- Matched -->
+        <div class="result-box">
+            <h3>Matched Skills</h3>
+            <ul>
+                {% for skill in matched %}
+                    <li class="matched">{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Missing -->
+        <div class="result-box">
+            <h3>Missing Skills</h3>
+            <ul>
+                {% for skill in missing %}
+                    <li class="missing">{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
