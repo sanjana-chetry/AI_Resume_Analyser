@@ -2,26 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon.png">
+    <title>zCV | Result</title>
+    <link rel="stylesheet" href="../static/result.css">
 </head>
 <body>
-    <h2>Role Selected: {{ role }}</h2>
 
-<h3>Skill Coverage: {{ coverage }}%</h3>
+<div class="result-wrapper">
 
-<h4>Matched Skills</h4>
-<ul>
-    {% for skill in matched %}
-        <li style="color:green;">✔ {{ skill }}</li>
-    {% endfor %}
-</ul>
+    <h1 class="result-title">Resume Analysis</h1>
+    <h2 class="target-role">Target Role: {{ role }}</h2>
 
-<h4>Missing Skills</h4>
-<ul>
-    {% for skill in missing %}
-        <li style="color:red;">✘ {{ skill }}</li>
-    {% endfor %}
-</ul>
+    <div class="result-columns">
+
+        <!-- Matched -->
+        <div class="result-box">
+            <h3>Matched Skills</h3>
+            <ul>
+                {% for skill in matched %}
+                    <li class="matched">{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Missing -->
+        <div class="result-box">
+            <h3>Missing Skills</h3>
+            <ul>
+                {% for skill in missing %}
+                    <li class="missing">{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>

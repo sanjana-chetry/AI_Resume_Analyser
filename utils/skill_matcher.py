@@ -1,46 +1,74 @@
 import json
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
+import os
 import re
-#load model
-model=SentenceTransformer('all-MiniLM-L6-v2')
 
-#load json skills
+# Load skills once (when file is imported)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SKILL_PATH = os.path.join(BASE_DIR, "role_skills.json")
 
-with open("utils/role_skills.json")as f:
-    ROLE_SKILLS=json.load(f)
+with open(SKILL_PATH, "r", encoding="utf-8") as f:
+    ROLE_SKILLS = json.load(f)
 
 
-def analyse_skills(resume_text,selected_role,threshold=0.25):
-    #resume_embedding=model.encode([resume_text])
-    skills=ROLE_SKILLS.get(selected_role,[])
-    #split resume into chunks
-    sentences=re.split(r'[.\n]',resume_text)
-    print("Analysing role:",selected_role)
+def detect_skills(resume_text, selected_role):
+    """
+    Detect matched and missing skills for a given role.
+    Supports structured skills with synonyms.
+    Handles special characters like c++, node.js, ci/cd properly.
+    """
 
-    matched=[]
-    missing=[]
+    # Validate role
+    if selected_role not in ROLE_SKILLS:
+        return {
+            "matched_skills": [],
+            "missing_skills": [],
+            "error": "Invalid role selected"
+        }
 
-    for skill in skills:
-        #print("checking skill:",skill)
-        skill_embedding=model.encode([skill])
-        max_similarity=0
-        for sentence in sentences:
-            if (sentence.strip()==""):
-                continue
-            sentence_embedding=model.encode([sentence])
-            similarity=cosine_similarity(sentence_embedding,skill_embedding)[0][0]
-        #print(skill,similarity)
+    role_skills = ROLE_SKILLS[selected_role]
 
-            if similarity>max_similarity:
-                max_similarity=similarity
-        print(skill,"max_similarity",max_similarity)
+    # Normalize resume text
+    resume_text = resume_text.lower()
 
-        if(max_similarity>=threshold):
-            matched.append(skill)
+    # Better tokenization (handles c++, node.js, ci/cd, scikit-learn, etc.)
+    resume_tokens = set(resume_text.split())
+    
+    matched = []
+    missing = []
+
+    for skill_obj in role_skills:
+        skill_name = skill_obj["name"].lower()
+        synonyms = [s.lower() for s in skill_obj.get("synonyms", [])]
+
+        found = False
+
+        # ---------- Check main skill ----------
+        if " " in skill_name:
+            if skill_name in resume_text:
+                found = True
         else:
-            missing.append(skill)
+            if skill_name in resume_tokens:
+                found = True
 
-    coverage=round((len(matched)/len(skills))*100,2)if skills else 0
-    print("coverage:",coverage)
-    return coverage,matched,missing
+        # ---------- Check synonyms if not found ----------
+        if not found:
+            for syn in synonyms:
+                if " " in syn:
+                    if syn in resume_text:
+                        found = True
+                        break
+                else:
+                    if syn in resume_tokens:
+                        found = True
+                        break
+
+        # ---------- Store canonical skill name ----------
+        if found:
+            matched.append(skill_name)
+        else:
+            missing.append(skill_name)
+
+    return {
+        "matched_skills": matched,
+        "missing_skills": missing
+    }

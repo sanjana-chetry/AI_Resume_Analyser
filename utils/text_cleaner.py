@@ -5,7 +5,7 @@ def clean_text(text):
     text = text.lower()
 
     # remove special characters (keep letters & numbers)
-    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    text = re.sub(r"[^a-z0-9\s\+\#\.\-\/]", " ", text)
 
     # remove extra spaces
     text = re.sub(r"\s+", " ", text)

@@ -56,3 +56,20 @@ form.addEventListener("submit", function () {
     analyseBtn.innerHTML = "Analysing...";
 });
 
+window.addEventListener("load", function () {
+    const errorMessage = document.getElementById("errorMessage");
+
+    if (errorMessage) {
+        setTimeout(function () {
+            errorMessage.style.transition = "opacity 0.5s ease";
+            errorMessage.style.opacity = "0";
+        }, 3000);
+
+        setTimeout(function () {
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+        }, 3500);
+    }
+});
+
