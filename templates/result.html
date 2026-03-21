@@ -2,42 +2,231 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon.png') }}">
     <title>zCV | Result</title>
-    <link rel="stylesheet" href="../static/result.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
 </head>
 <body>
 
-<div class="result-wrapper">
+    <!-- Navbar -->
+    <nav id="mainNav">
+        <span class="logo">z<span class="logo-cv">CV</span></span>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
 
-    <h1 class="result-title">Resume Analysis</h1>
-    <h2 class="target-role">Target Role: {{ role }}</h2>
-
-    <div class="result-columns">
-
-        <!-- Matched -->
-        <div class="result-box">
-            <h3>Matched Skills</h3>
-            <ul>
-                {% for skill in matched %}
-                    <li class="matched">{{ skill }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-
-        <!-- Missing -->
-        <div class="result-box">
-            <h3>Missing Skills</h3>
-            <ul>
-                {% for skill in missing %}
-                    <li class="missing">{{ skill }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-
+    <div class="nav-drawer" id="navDrawer">
+        <a href="/">Home</a>
+        <a href="#">About</a>
+        <a href="#" id="mobileThemeToggle">Switch to Light</a>
     </div>
 
-</div>
+    <main class="result-page">
+        <div class="result-wrapper">
+
+            <!-- Header -->
+            <div class="result-header">
+                <p class="result-eyebrow">Analysis Complete</p>
+                <h1 class="result-title">Resume Analysis</h1>
+            </div>
+
+            <!-- Target role -->
+            <p class="target-role">
+                Target Role: <span class="role-badge">{{ role }}</span>
+            </p>
+
+            <!-- Main two-column grid -->
+            <div class="result-main-grid">
+
+                <!-- LEFT: Score + Sections -->
+                <div class="left-col">
+
+                    <!-- Score Card -->
+                    <div class="score-card">
+                        <p class="score-label">ATS Match Score</p>
+                        <div class="score-ring">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle class="ring-bg" cx="50" cy="50" r="40"/>
+                                <circle class="ring-fill" cx="50" cy="50" r="40"
+                                    stroke-dasharray="{{ ((score * 251.3) / 100)|round }} 251.3"/>
+                            </svg>
+                            <span class="ring-label">{{ score }}%</span>
+                        </div>
+                        <p class="score-number">{{ score }}<span class="score-pct">%</span></p>
+                        <p class="score-verdict">
+                            {% if score >= 80 %}
+                                Strong match — your resume is well aligned.
+                            {% elif score >= 50 %}
+                                Moderate match — a few key skills are missing.
+                            {% else %}
+                                Low match — consider adding more role-specific skills.
+                            {% endif %}
+                        </p>
+                    </div>
+
+                    <!-- Resume Sections Card -->
+                    {% if sections %}
+                    <div class="sections-card">
+                        <h3 class="sections-title">Resume Sections Detected</h3>
+                        <ul class="sections-list">
+                            {% for section in sections %}
+                            <li class="section-item {{ 'section-found' if section.found else 'section-missing' }}">
+                                <span class="section-icon">
+                                    {% if section.found %}
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                    {% else %}
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                    {% endif %}
+                                </span>
+                                {{ section.name }}
+                                {% if not section.found %}<span class="section-hint">— not detected</span>{% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+                <!-- RIGHT: Skills + Suggestions -->
+                <div class="right-col">
+
+                    <div class="skills-grid">
+                        <!-- Matched Skills -->
+                        <div class="result-box matched-box">
+                            <div class="box-header">
+                                <div class="box-icon matched-icon">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                </div>
+                                <h3>Matched Skills</h3>
+                                <span class="count-badge matched-count">{{ matched|length }}</span>
+                            </div>
+                            <ul class="skill-list">
+                                {% for skill in matched %}
+                                    <li class="skill-tag matched-tag">{{ skill }}</li>
+                                {% else %}
+                                    <li class="empty-state">No matched skills found.</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- Missing Skills -->
+                        <div class="result-box missing-box">
+                            <div class="box-header">
+                                <div class="box-icon missing-icon">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                </div>
+                                <h3>Missing Skills</h3>
+                                <span class="count-badge missing-count">{{ missing|length }}</span>
+                            </div>
+                            <ul class="skill-list">
+                                {% for skill in missing %}
+                                    <li class="skill-tag missing-tag">{{ skill }}</li>
+                                {% else %}
+                                    <li class="empty-state">No missing skills — great resume!</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- AI Suggestions -->
+                    {% if suggestions %}
+                    <div class="suggestions-card">
+                        <div class="suggestions-header">
+                            <div class="suggestions-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </div>
+                            <h3>AI Improvement Suggestions</h3>
+                        </div>
+                        <ul class="suggestions-list">
+                            {% for item in suggestions %}
+                            <li class="suggestion-item">
+                                <span class="suggestion-skill">{{ item.skill }}</span>
+                                <span class="suggestion-text">{{ item.suggestion }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <!-- Back button -->
+            <div class="result-footer">
+                <a href="/" class="back-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Analyse Another Resume
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // ── Mobile nav toggle ────────────────────────────────
+        const toggle = document.getElementById("navToggle");
+        const drawer = document.getElementById("navDrawer");
+        if (toggle && drawer) {
+            toggle.addEventListener("click", () => drawer.classList.toggle("open"));
+            document.addEventListener("click", e => {
+                if (!toggle.contains(e.target) && !drawer.contains(e.target))
+                    drawer.classList.remove("open");
+            });
+        }
+
+        // Theme toggle 
+        function applyTheme(light) {
+            document.body.classList.toggle("light", light);
+            localStorage.setItem("zcv-theme", light ? "light" : "dark");
+            const sun  = document.getElementById("iconSun");
+            const moon = document.getElementById("iconMoon");
+            if (sun)  sun.style.display  = light ? "none"   : "inline";
+            if (moon) moon.style.display = light ? "inline" : "none";
+            const mob = document.getElementById("mobileThemeToggle");
+            if (mob) mob.textContent = light ? "Switch to Dark" : "Switch to Light";
+        }
+
+        // Apply saved theme after DOM ready
+        applyTheme(localStorage.getItem("zcv-theme") === "light");
+
+        const themeBtn = document.getElementById("themeToggle");
+        const mobTheme = document.getElementById("mobileThemeToggle");
+        if (themeBtn) themeBtn.addEventListener("click", () =>
+            applyTheme(!document.body.classList.contains("light")));
+        if (mobTheme) mobTheme.addEventListener("click", e => {
+            e.preventDefault();
+            applyTheme(!document.body.classList.contains("light"));
+        });
+    </script>
 
 </body>
 </html>
