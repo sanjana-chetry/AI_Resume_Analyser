@@ -174,4 +174,4 @@ MIT License — feel free to use, modify, and distribute.
 
 ---
 
-<p align="center">Built by <a href="https://github.com/sanjana-chetry">Sanjana Chetry and <a href="https://github.com/sanjana-chetry](https://github.com/koushiiik"> Koushik Mahanta</a></p>
+<p align="center">Built by <a href="https://github.com/sanjana-chetry">Sanjana Chetry <p>and </p><a href="https://github.com/koushiiik"> Koushik Mahanta</a></p>
